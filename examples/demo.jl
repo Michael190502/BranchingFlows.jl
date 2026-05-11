@@ -13,7 +13,7 @@ Pkg.develop(path=joinpath(@__DIR__, ".."))
 # ENV["BF_DEMO_NO_CUDA"] = "true"
 use_gpu = get(ENV, "BF_DEMO_NO_CUDA", "false") == "false"
 if use_gpu
-    Pkg.add(["cuDNN", "CUDA"])
+    Pkg.add([Pkg.PackageSpec(name="cuDNN"), Pkg.PackageSpec(name="CUDA", version="5.9.4")])
     using cuDNN, CUDA
 end
 
